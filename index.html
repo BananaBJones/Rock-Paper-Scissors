@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        let playerScore = 0;
+        let roundNum = 1;
+
+        function computerPlay () {
+            var cChoices = ['Rock', 'Paper', 'Scissors'];
+            const cPlay = cChoices[Math.floor(Math.random() * cChoices.length)];
+            // console.log("The Computers Choice is: " + cPlay);
+            return(cPlay)
+        }
+        function aRound(playerSelection, computerSelection) {
+            roundNum++;
+
+            switch(playerSelection)
+            {
+                case 'Rock': 
+                    if (computerSelection === 'Scissors') {
+                        playerScore++;
+                        return "Winner";
+                    }
+                    else if (computerSelection === 'Paper') {
+                        playerScore--;
+                        return "Loser";
+                    }
+                    else {
+                       return "Tie";
+                    }
+                    break;
+                case 'Paper':
+                    if (computerSelection === 'Rock') {
+                        playerScore++;
+                        return "Winner";
+                    }
+                    else if (computerSelection === 'Scissors'){
+                        playerScore--;
+                        return "Loser";
+                    }
+                    else {
+                        return "Tie";
+                    }
+                    break;
+                case 'Scissors': 
+                    if (computerSelection === 'Paper'){
+                        playerScore++;
+                        return "Winner";
+                    }
+                    else if (computerSelection === 'Rock') {
+                        playerScore--;
+                        return "Loser";
+                    }
+                    else {
+                        return "Tie";
+                    }
+                    break;
+                default: 
+                    console.log('Type Rock Paper or Scissors only');
+            }
+            
+        }
+        function game() {
+            for(i = 5; i > 0; i--) {
+                let playerChoice = prompt('Rock Paper or Scissors?');
+                playerChoice = playerChoice[0].toUpperCase() + playerChoice.slice(1).toLowerCase();
+                let computerChoice = computerPlay();
+                // console.log(computerChoice);
+                if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
+                    console.log('Round: ' + roundNum);
+                    let results = aRound(playerChoice, computerChoice);
+                    console.log('Player: ' + playerChoice);
+                    console.log('Computer: ' + computerChoice);
+                    console.log('Results: ' + results);
+                }
+                else {
+                    i++;
+                    console.log('round didnt count. Rock Paper or Scissors only');
+                }
+
+
+            }
+            console.log('Game Over! Your final score is: ' + playerScore);
+        }
+
+        game();
+    
+    </script>
+
+</body>
+</html>
