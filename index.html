@@ -9,18 +9,23 @@
     <script src="js-file.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/9bed6e624e.js" crossorigin="anonymous"></script>  
 </head>
 <body>
     <header>
-        <a href="index.html"><i class="fas fa-dungeon fa-7x"></i></a>
+        <a href="index.html"><i class="fas fa-robot fa-7x"></i></a>
         <div class='title'>
             <h1 class="header">Rock - Paper - Scissors</h1>
-            <h1 class="subheader">Best of Five</h1>
+            <h2 class="subheader">First to Five Points Win <br><br> 
+                <a style="color: #D79922">Man</a> 
+                <a style="font-size: 25px">vs</a> 
+                <a style='color: #4056A1'>Machine</a></h2>
         </div>
-        <a href='about-me.html'><i class="fas fa-dragon fa-7x"></i></a>
+        <!-- <a href='about-me.html'><i class="fas fa-dragon fa-7x"></i></a> -->
+        <div class="fas"></div>
     </header>
+    <div id='gameHistory'></div>
     <div id="container">
         <div id="left">
             <h3 id="l-header">Player</h3>
@@ -32,11 +37,11 @@
     </div>
     <div class="btns">
         <!-- <button id="Rock" class="btn">Rock</button> -->
-        <img id="Rock" src="Images/Rock Orange.png" alt="Rock Button">
+        <img id="Rock" class='btn' src="Images/Rock Orange.png" alt="Rock Button">
         <!-- <button id="Scissors" class="btn">Scissors</button> -->
-        <img id="Scissors" src="Images/Scissors Orange.png" alt="Scissors Button">
+        <img id="Scissors" class='btn'  src="Images/Scissors Orange.png" alt="Scissors Button">
         <!-- <button id="Paper" class="btn">Paper</button> -->
-        <img id="Paper" src='Images/Paper Orange.png' alt="Paper Button">
+        <img id="Paper" class='btn'  src='Images/Paper Orange.png' alt="Paper Button">
     </div>
 
 <script>

@@ -1,5 +1,6 @@
 
 let playerScore = 0;
+let computerScore = 0;
 let roundNum = 1;
 
 function computerPlay () {
@@ -20,7 +21,7 @@ function whoWon(playerSelection, computerSelection) {
                 return "Winner";
             }
             else if (computerSelection === 'Paper') {
-                playerScore--;
+                computerScore++;
                 return "Loser";
             }
             else {
@@ -33,7 +34,7 @@ function whoWon(playerSelection, computerSelection) {
                 return "Winner";
             }
             else if (computerSelection === 'Scissors'){
-                playerScore--;
+                computerScore++;
                 return "Loser";
             }
             else {
@@ -46,7 +47,7 @@ function whoWon(playerSelection, computerSelection) {
                 return "Winner";
             }
             else if (computerSelection === 'Rock') {
-                playerScore--;
+                computerScore++;
                 return "Loser";
             }
             else {
@@ -98,31 +99,72 @@ function playRound(buttonChoice) {
         else {
             return;
         }
-    score.textContent = playerScore;
-    body.replaceChild(score, score);
+    sPlayerScore.textContent = playerScore;
+    left.replaceChild(sPlayerScore, sPlayerScore);
+
+    sComputerScore.textContent = computerScore;
+    right.replaceChild(sComputerScore, sComputerScore);
 
 }
 function resetGame() {
     roundNum = 1;
     playerScore = 0;
-    
+    computerScore = 0;
+
+    round.textContent = "Round " + roundNum;
+    body.insertBefore(round, container);
+
+    result.textContent = 'Score';
+    body.insertBefore(result, container);
+
+    winner.textContent = '\\\\\\ Good Luck!! ///';
+    body.insertBefore(winner, container);
+
+    sPlayerScore.textContent = playerScore;
+    left.replaceChild(sPlayerScore, sPlayerScore);
+
+    sComputerScore.textContent = computerScore;
+    right.replaceChild(sComputerScore, sComputerScore);
+
 }
+// function game(buttonChoice) {
+//     if (roundNum < 5) {
+//         playRound(buttonChoice);
+//     }
+//     else {
+//         playRound(buttonChoice);
+//         if (playerScore >= 3) {
+//             winner.textContent = "Player Wins";
+//             body.insertBefore(winner, container);
+//             resetGame();
+//         }
+//         else {
+//             winner.textContent = "Computer Wins";
+//             body.insertBefore(winner, container);
+//             resetGame();
+//         }
+//     }
+// }
+
 function game(buttonChoice) {
-    if (roundNum < 5) {
-        playRound(buttonChoice);
+    playRound(buttonChoice);
+    if (playerScore === 5) {
+        winner.textContent = "Player Wins";
+        body.insertBefore(winner, container)
+        // alert('You Win!!');
+        setTimeout(function() {
+            alert("You Win!");
+        },10)
+        resetGame();
     }
-    else {
-        playRound(buttonChoice);
-        if (playerScore >= 3) {
-            winner.textContent = "Player Wins";
-            body.insertBefore(winner, container);
-            resetGame();
-        }
-        else {
-            winner.textContent = "Computer Wins";
-            body.insertBefore(winner, container);
-            resetGame();
-        }
+    else if (computerScore === 5) {
+        // alert('You Lose SUCKA!');
+        winner.textContent = 'Computer Wins';
+        body.insertBefore(winner, container);
+        setTimeout(function() {
+            alert("Computer Wins");
+        },10)
+        resetGame();
     }
 }
 
@@ -140,6 +182,7 @@ imgs.forEach((img) => {
     });
   });
 
+
 const container = document.querySelector('#container');
 const body = document.querySelector('body');
 const left = document.querySelector('#left');
@@ -154,14 +197,12 @@ body.insertBefore(round, container)
 
 sPlayerChoice = document.createElement('img');
 sPlayerChoice.classList.add('playerChoice')
-// sPlayerChoice.textContent = '';
-sPlayerChoice.src = '';
+sPlayerChoice.src = 'Images/blank.jpg';
 left.appendChild(sPlayerChoice);
 
 sComputerChoice = document.createElement('img');
 sComputerChoice.classList.add('computerChoice');
-// sComputerChoice.textContent = '';
-sComputerChoice.src = '';
+sComputerChoice.src = 'Images/blank.jpg';
 right.insertBefore(sComputerChoice, rHeader);
 
 result = document.createElement('div');
@@ -169,18 +210,17 @@ result.classList.add('results');
 result.textContent = 'Score';
 body.insertBefore(result, container);
 
-score = document.createElement('div');
-score.classList.add('score');
-score.textContent = playerScore;
-body.insertBefore(score, container)
+sPlayerScore = document.createElement('div');
+sPlayerScore.classList.add('sPlayerScore');
+sPlayerScore.textContent = playerScore;
+left.insertBefore(sPlayerScore, lHeader)
+
+sComputerScore = document.createElement('div');
+sComputerScore.classList.add('sComputerScore');
+sComputerScore.textContent = computerScore;
+right.appendChild(sComputerScore);
 
 winner = document.createElement('div');
 winner.classList.add('winner');
 winner.textContent = '\\\\\\ Good Luck!! ///';
 body.insertBefore(winner, container);
-
-
-// const results = document.createElement('div');
-// results.classList.add('results');
-// results.textContent = 'Results';
-// container.appendChild(results);
