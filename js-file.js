@@ -70,7 +70,7 @@ function winnerMessage(result) {
 
 }
 function playRound(buttonChoice) {
-        let playerChoice = buttonChoice // prompt('Rock Paper or Scissors?');
+        let playerChoice = buttonChoice;
 
         let computerChoice = computerPlay();
 
