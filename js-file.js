@@ -120,31 +120,13 @@ function resetGame() {
     winner.textContent = '\\\\\\ Good Luck!! ///';
     body.insertBefore(winner, container);
 
-    sPlayerScore.textContent = playerScore;
-    left.replaceChild(sPlayerScore, sPlayerScore);
+    // sPlayerScore.textContent = playerScore;
+    // left.replaceChild(sPlayerScore, sPlayerScore);
 
-    sComputerScore.textContent = computerScore;
-    right.replaceChild(sComputerScore, sComputerScore);
+    // sComputerScore.textContent = computerScore;
+    // right.replaceChild(sComputerScore, sComputerScore);
 
 }
-// function game(buttonChoice) {
-//     if (roundNum < 5) {
-//         playRound(buttonChoice);
-//     }
-//     else {
-//         playRound(buttonChoice);
-//         if (playerScore >= 3) {
-//             winner.textContent = "Player Wins";
-//             body.insertBefore(winner, container);
-//             resetGame();
-//         }
-//         else {
-//             winner.textContent = "Computer Wins";
-//             body.insertBefore(winner, container);
-//             resetGame();
-//         }
-//     }
-// }
 
 function game(buttonChoice) {
     playRound(buttonChoice);
