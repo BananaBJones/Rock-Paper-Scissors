@@ -5,93 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js-file.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9bed6e624e.js" crossorigin="anonymous"></script>  
 </head>
 <body>
-    <script>
-        let playerScore = 0;
-        let roundNum = 1;
+    <header>
+        <a href="index.html"><i class="fas fa-robot fa-7x"></i></a>
+        <div class='title'>
+            <h1 class="header">Rock - Paper - Scissors</h1>
+            <h2 class="subheader">First to Five Points Win <br><br> 
+                <a style="color: #D79922">Man</a> 
+                <a style="font-size: 25px">vs</a> 
+                <a style='color: #4056A1'>Machine</a></h2>
+        </div>
+        <!-- <a href='about-me.html'><i class="fas fa-dragon fa-7x"></i></a> -->
+        <div class="fas"></div>
+    </header>
+    <div id='gameHistory'></div>
+    <div id="container">
+        <div id="left">
+            <h3 id="l-header">Player</h3>
+        </div>
+        <div id="right">
+            <h3 id="r-header">Computer</h3>
+        </div>
+ 
+    </div>
+    <div class="btns">
+        <!-- <button id="Rock" class="btn">Rock</button> -->
+        <img id="Rock" class='btn' src="Images/Rock Orange.png" alt="Rock Button">
+        <!-- <button id="Scissors" class="btn">Scissors</button> -->
+        <img id="Scissors" class='btn'  src="Images/Scissors Orange.png" alt="Scissors Button">
+        <!-- <button id="Paper" class="btn">Paper</button> -->
+        <img id="Paper" class='btn'  src='Images/Paper Orange.png' alt="Paper Button">
+    </div>
 
-        function computerPlay () {
-            var cChoices = ['Rock', 'Paper', 'Scissors'];
-            const cPlay = cChoices[Math.floor(Math.random() * cChoices.length)];
-            // console.log("The Computers Choice is: " + cPlay);
-            return(cPlay)
-        }
-        function aRound(playerSelection, computerSelection) {
-            roundNum++;
+<script>
+//     const btn = document.querySelector('.btn');
+//     const buttons = document.querySelectorAll('button');
+//     buttons.forEach((button) => {
+//         button.addEventListener('click', () => {
+//         alert(button.id);
+//     });
+//   });
 
-            switch(playerSelection)
-            {
-                case 'Rock': 
-                    if (computerSelection === 'Scissors') {
-                        playerScore++;
-                        return "Winner";
-                    }
-                    else if (computerSelection === 'Paper') {
-                        playerScore--;
-                        return "Loser";
-                    }
-                    else {
-                       return "Tie";
-                    }
-                    break;
-                case 'Paper':
-                    if (computerSelection === 'Rock') {
-                        playerScore++;
-                        return "Winner";
-                    }
-                    else if (computerSelection === 'Scissors'){
-                        playerScore--;
-                        return "Loser";
-                    }
-                    else {
-                        return "Tie";
-                    }
-                    break;
-                case 'Scissors': 
-                    if (computerSelection === 'Paper'){
-                        playerScore++;
-                        return "Winner";
-                    }
-                    else if (computerSelection === 'Rock') {
-                        playerScore--;
-                        return "Loser";
-                    }
-                    else {
-                        return "Tie";
-                    }
-                    break;
-                default: 
-                    console.log('Type Rock Paper or Scissors only');
-            }
-            
-        }
-        function game() {
-            for(i = 5; i > 0; i--) {
-                let playerChoice = prompt('Rock Paper or Scissors?');
-                playerChoice = playerChoice[0].toUpperCase() + playerChoice.slice(1).toLowerCase();
-                let computerChoice = computerPlay();
-                // console.log(computerChoice);
-                if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
-                    console.log('Round: ' + roundNum);
-                    let results = aRound(playerChoice, computerChoice);
-                    console.log('Player: ' + playerChoice);
-                    console.log('Computer: ' + computerChoice);
-                    console.log('Results: ' + results);
-                }
-                else {
-                    i++;
-                    console.log('round didnt count. Rock Paper or Scissors only');
-                }
-
-
-            }
-            console.log('Game Over! Your final score is: ' + playerScore);
-        }
-
-        game();
-    
-    </script>
-
+</script>
 </body>
 </html>
