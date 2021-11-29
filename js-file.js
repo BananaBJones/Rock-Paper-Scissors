@@ -151,19 +151,19 @@ function game(buttonChoice) {
     if (playerScore === 5) {
         winner.textContent = "Player Wins";
         body.insertBefore(winner, container)
-        // alert('You Win!!');
-        setTimeout(function() {
-            alert("You Win!");
-        },10)
+        alert('You Win!!');
+        // setTimeout(function() {
+        //     alert("You Win!");
+        // },10)
         resetGame();
     }
     else if (computerScore === 5) {
-        // alert('You Lose SUCKA!');
         winner.textContent = 'Computer Wins';
         body.insertBefore(winner, container);
-        setTimeout(function() {
-            alert("Computer Wins");
-        },10)
+        alert('You Lose SUCKA!');
+        // setTimeout(function() {
+        //     alert("Computer Wins");
+        // },10)
         resetGame();
     }
 }
