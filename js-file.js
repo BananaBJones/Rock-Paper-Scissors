@@ -207,7 +207,7 @@ right.insertBefore(sComputerChoice, rHeader);
 
 result = document.createElement('div');
 result.classList.add('results');
-result.textContent = 'Score';
+result.textContent = 'Results';
 body.insertBefore(result, container);
 
 sPlayerScore = document.createElement('div');
