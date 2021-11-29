@@ -10,61 +10,78 @@ function computerPlay () {
     right.replaceChild(sComputerChoice, sComputerChoice);
     return(cPlay)
 }
+// function whoWon(playerSelection, computerSelection) {
+//     switch(playerSelection)
+//     {
+//         case 'Rock': 
+//             if (computerSelection === 'Scissors') {
+//                 playerScore++;
+//                 result.style.color = '#D79922';
+//                 return "Winner";
+//             }
+//             else if (computerSelection === 'Paper') {
+//                 computerScore++;
+//                 result.style.color = '#4056A1';
+//                 return "Loser";
+//             }
+//             else {
+//                 result.style.color = 'black';
+//                return "Tie";
+//             }
+//             break;
+//         case 'Paper':
+//             if (computerSelection === 'Rock') {
+//                 playerScore++;
+//                 result.style.color = '#D79922';
+//                 return "Winner";
+//             }
+//             else if (computerSelection === 'Scissors'){
+//                 computerScore++;
+//                 result.style.color = '#4056A1';
+//                 return "Loser";
+//             }
+//             else {
+//                 result.style.color = 'black';
+//                 return "Tie";
+//             }
+//             break;
+//         case 'Scissors': 
+//             if (computerSelection === 'Paper'){
+//                 playerScore++;
+//                 result.style.color = '#D79922'
+//                 return "Winner";
+//             }
+//             else if (computerSelection === 'Rock') {
+//                 computerScore++;
+//                 result.style.color = '#4056A1';
+//                 return "Loser";
+//             }
+//             else {
+//                 result.style.color = 'black';
+//                 return "Tie";
+//             }
+//             break;
+//         default: 
+//     }    
+// }
 function whoWon(playerSelection, computerSelection) {
-    roundNum++;
-
-    switch(playerSelection)
-    {
-        case 'Rock': 
-            if (computerSelection === 'Scissors') {
-                playerScore++;
-                result.style.color = '#D79922';
-                return "Winner";
-            }
-            else if (computerSelection === 'Paper') {
-                computerScore++;
-                result.style.color = '#4056A1';
-                return "Loser";
-            }
-            else {
-                result.style.color = 'black';
-               return "Tie";
-            }
-            break;
-        case 'Paper':
-            if (computerSelection === 'Rock') {
-                playerScore++;
-                result.style.color = '#D79922';
-                return "Winner";
-            }
-            else if (computerSelection === 'Scissors'){
-                computerScore++;
-                result.style.color = '#4056A1';
-                return "Loser";
-            }
-            else {
-                result.style.color = 'black';
-                return "Tie";
-            }
-            break;
-        case 'Scissors': 
-            if (computerSelection === 'Paper'){
-                playerScore++;
-                result.style.color = '#D79922'
-                return "Winner";
-            }
-            else if (computerSelection === 'Rock') {
-                computerScore++;
-                result.style.color = '#4056A1';
-                return "Loser";
-            }
-            else {
-                result.style.color = 'black';
-                return "Tie";
-            }
-            break;
-        default: 
-    }    
+    switch(true) {
+        case (playerSelection === computerSelection):
+            result.style.color = 'black';
+            return "Tie";
+        case (playerSelection === 'Rock' && computerSelection === 'Scissors'):
+        case (playerSelection === 'Scissors' && computerSelection === 'Paper'):
+        case (playerSelection === 'Paper' && computerSelection === 'Rock'):
+            playerScore++;
+            result.style.color = '#D79922';
+            return "Winner";
+        case (playerSelection === 'Rock' && computerSelection === 'Paper'):
+        case (playerSelection === 'Scissors' && computerSelection === 'Rock'):
+        case (playerSelection === 'Paper' && computerSelection === 'Scissors'):
+            computerScore++;
+            result.style.color = '#4056A1';
+            return "Loser";
+    }
 }
 function winnerMessage(result) {
     let quips = {
@@ -83,32 +100,24 @@ function playRound(buttonChoice) {
 
         let computerChoice = computerPlay();
 
-            round.textContent = 'Round ' + roundNum;
-            body.replaceChild(round, round);
+        let results = whoWon(playerChoice, computerChoice);
+        winnerMessage(results);
 
-            let results = whoWon(playerChoice, computerChoice);
+        round.textContent = 'Round ' + roundNum;
+        body.replaceChild(round, round);
+        roundNum++;
 
-            if (results === 'Winner') {
-                winnerMessage('Winner');
-            }
-            else if (results === 'Loser') {
-                winnerMessage('Loser');
-            }
-            else {
-                winnerMessage('Tie');
-            }
-            // sPlayerChoice.textContent = playerChoice;
-            sPlayerChoice.src = 'Images/' + playerChoice +' Orange.png';
-            left.replaceChild(sPlayerChoice, sPlayerChoice);
+        sPlayerChoice.src = 'Images/' + playerChoice +' Orange.png';
+        left.replaceChild(sPlayerChoice, sPlayerChoice);
 
-            result.textContent = results;
-            body.replaceChild(result, result);
-    sPlayerScore.textContent = playerScore;
-    left.replaceChild(sPlayerScore, sPlayerScore);
+        result.textContent = results;
+        body.replaceChild(result, result);
 
-    sComputerScore.textContent = computerScore;
-    right.replaceChild(sComputerScore, sComputerScore);
+        sPlayerScore.textContent = playerScore;
+        left.replaceChild(sPlayerScore, sPlayerScore);
 
+        sComputerScore.textContent = computerScore;
+        right.replaceChild(sComputerScore, sComputerScore);
 }
 function resetGame() {
     roundNum = 1;
@@ -118,7 +127,7 @@ function resetGame() {
     round.textContent = "Round " + roundNum;
     body.insertBefore(round, container);
 
-    result.textContent = 'Score';
+    result.textContent = 'Results';
     body.insertBefore(result, container);
 
     winner.textContent = '\\\\\\ Good Luck!! ///';
