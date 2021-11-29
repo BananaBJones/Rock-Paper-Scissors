@@ -18,39 +18,48 @@ function whoWon(playerSelection, computerSelection) {
         case 'Rock': 
             if (computerSelection === 'Scissors') {
                 playerScore++;
+                result.style.color = '#D79922';
                 return "Winner";
             }
             else if (computerSelection === 'Paper') {
                 computerScore++;
+                result.style.color = '#4056A1';
                 return "Loser";
             }
             else {
+                result.style.color = 'black';
                return "Tie";
             }
             break;
         case 'Paper':
             if (computerSelection === 'Rock') {
                 playerScore++;
+                result.style.color = '#D79922';
                 return "Winner";
             }
             else if (computerSelection === 'Scissors'){
                 computerScore++;
+                result.style.color = '#4056A1';
                 return "Loser";
             }
             else {
+                result.style.color = 'black';
                 return "Tie";
             }
             break;
         case 'Scissors': 
             if (computerSelection === 'Paper'){
                 playerScore++;
+                result.style.color = '#D79922'
                 return "Winner";
             }
             else if (computerSelection === 'Rock') {
                 computerScore++;
+                result.style.color = '#4056A1';
                 return "Loser";
             }
             else {
+                result.style.color = 'black';
                 return "Tie";
             }
             break;
@@ -74,7 +83,6 @@ function playRound(buttonChoice) {
 
         let computerChoice = computerPlay();
 
-        if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") {
             round.textContent = 'Round ' + roundNum;
             body.replaceChild(round, round);
 
@@ -95,10 +103,6 @@ function playRound(buttonChoice) {
 
             result.textContent = results;
             body.replaceChild(result, result);
-        }
-        else {
-            return;
-        }
     sPlayerScore.textContent = playerScore;
     left.replaceChild(sPlayerScore, sPlayerScore);
 
