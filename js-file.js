@@ -120,50 +120,32 @@ function resetGame() {
     winner.textContent = '\\\\\\ Good Luck!! ///';
     body.insertBefore(winner, container);
 
-    sPlayerScore.textContent = playerScore;
-    left.replaceChild(sPlayerScore, sPlayerScore);
+    // sPlayerScore.textContent = playerScore;
+    // left.replaceChild(sPlayerScore, sPlayerScore);
 
-    sComputerScore.textContent = computerScore;
-    right.replaceChild(sComputerScore, sComputerScore);
+    // sComputerScore.textContent = computerScore;
+    // right.replaceChild(sComputerScore, sComputerScore);
 
 }
-// function game(buttonChoice) {
-//     if (roundNum < 5) {
-//         playRound(buttonChoice);
-//     }
-//     else {
-//         playRound(buttonChoice);
-//         if (playerScore >= 3) {
-//             winner.textContent = "Player Wins";
-//             body.insertBefore(winner, container);
-//             resetGame();
-//         }
-//         else {
-//             winner.textContent = "Computer Wins";
-//             body.insertBefore(winner, container);
-//             resetGame();
-//         }
-//     }
-// }
 
 function game(buttonChoice) {
     playRound(buttonChoice);
     if (playerScore === 5) {
         winner.textContent = "Player Wins";
         body.insertBefore(winner, container)
-        alert('You Win!!');
-        // setTimeout(function() {
-        //     alert("You Win!");
-        // },10)
+        // alert('You Win!!');
+        setTimeout(function() {
+            alert("You Win!");
+        },10)
         resetGame();
     }
     else if (computerScore === 5) {
         winner.textContent = 'Computer Wins';
         body.insertBefore(winner, container);
-        alert('You Lose SUCKA!');
-        // setTimeout(function() {
-        //     alert("Computer Wins");
-        // },10)
+        // alert('You Lose SUCKA!');
+        setTimeout(function() {
+            alert("Computer Wins");
+        },10)
         resetGame();
     }
 }
@@ -207,7 +189,7 @@ right.insertBefore(sComputerChoice, rHeader);
 
 result = document.createElement('div');
 result.classList.add('results');
-result.textContent = 'Score';
+result.textContent = 'Results';
 body.insertBefore(result, container);
 
 sPlayerScore = document.createElement('div');
